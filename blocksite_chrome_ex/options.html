@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>オプションページ</title>
+    <script>
+        function $(id){
+            return document.getElementById(id);
+        }
+
+        function init(){
+            var now_setting = localStorage["domain_redirects"] ? localStorage["domain_redirects"] : "";
+
+            var newElement = document.createElement("p"); // p要素作成
+            var newContent = document.createTextNode(now_setting); // テキストノードを作成
+            newElement.appendChild(newContent); // p要素にテキストノードを追加
+            var parentDiv = document.getElementById("now_setting");  // 親要素（div）への参照を取得
+            parentDiv.appendChild(newElement);
+        }
+        function save() {
+            localStorage["domain_redirects"] = JSON.parse($("message_txt").value);
+        }
+    </script>
+</head>
+
+<body onload="init();">
+    <div>
+        {
+        "aniwave.to": "https://excalidraw.com/",
+        "klmanga.biz": "https://excalidraw.com/"
+        }<br />
+        <textarea id="domain_redirects_obj" maxLength="1000" style="height: 5rem; width: 90%"></textarea>
+    </div>
+    <div><button id="close_btn" onClick="save();">保存</button></div>
+
+    <h2>今の設定状況</h2>
+    <div id="now_setting">
+    </div>
+</body>
+
+</html>

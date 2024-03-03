@@ -1,9 +1,9 @@
 // background.js
-const domainRedirects = {
-    "aniwave.to": "https://excalidraw.com/",
-    "klmanga.biz": "https://excalidraw.com/"
-    // Add more domains and their corresponding redirect URLs here
-};
+// const domainRedirects = {
+//     "aniwave.to": "https://excalidraw.com/",
+//     "klmanga.biz": "https://excalidraw.com/"
+// };
+const domainRedirects = localStorage["domain_redirects"]
 
 chrome.webRequest.onBeforeRequest.addListener(
     (details) => {
